@@ -3,6 +3,7 @@ from torch.nn import nn
 from IPython.display import display, clear_output
 import matplotlib.pyplot as plt
 from torch.nn.utils import clip_grad_norm_
+import math
 
 
 def lr_schedule(epoch, learning_rate, warmup_iters, total_iters, min_lr):
@@ -16,7 +17,7 @@ def lr_schedule(epoch, learning_rate, warmup_iters, total_iters, min_lr):
         return min_lr + coeff * (learning_rate - min_lr)
 
     
-def save_checkpoints(model, optimizer, save_ckpt_path):
+def save_checkpoints(model, optimizer, save_ckpt_path, epoch):
     model_args = model.get_init_args() 
     checkpoint = {
         'model': model.state_dict(),
