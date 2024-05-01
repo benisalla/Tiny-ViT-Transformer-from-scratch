@@ -1,5 +1,5 @@
 from torch.utils.data import Dataset
-
+from PIL import Image
 
 class VitCustomDataset(Dataset):
     def __init__(self, dataset_dict, transform=None):

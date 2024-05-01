@@ -1,6 +1,7 @@
 from tiny_vit_transformer_from_scratch.model.vit_feedforward import ViTFeedForwardMLP
 from tiny_vit_transformer_from_scratch.model.vit_layernorm import ViTLayerNorm
 from tiny_vit_transformer_from_scratch.model.vit_self_attention import ViTSelfAttention
+from torch.nn import nn
 
 
 class ViTBlock(nn.Module):

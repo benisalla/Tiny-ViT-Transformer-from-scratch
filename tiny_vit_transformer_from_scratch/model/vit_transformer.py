@@ -1,3 +1,4 @@
+from tiny_vit_transformer_from_scratch.core.config import VitConfig
 from tiny_vit_transformer_from_scratch.model.vit_block import ViTBlock
 from tiny_vit_transformer_from_scratch.model.vit_embedding import ViTConv2dEmbedding, ViTLNEmbedding
 from tiny_vit_transformer_from_scratch.model.vit_layernorm import ViTLayerNorm
@@ -9,26 +10,26 @@ import math
 
 class VisionTransformer(nn.Module):
 
-    def __init__(self, n_block, n_embd, h_size, p_size, im_size, c_dim, n_class, h_dim=None, d_rate=0.0, bias=False):
+    def __init__(self, config: VitConfig):
         super(VisionTransformer, self).__init__()
-        assert n_block is not None and p_size is not None and n_embd is not None and h_size is not None
-        self.n_block = n_block
-        self.n_patch = im_size**2 / p_size**2
-        self.n_embd = n_embd
-        self.h_size = h_size
-        self.p_size = p_size
-        self.im_size = im_size
-        self.c_dim = c_dim
-        self.n_class = n_class
-        self.h_dim = h_dim if c_dim else 4 * n_embd
-        self.d_rate = d_rate
-        self.bias = bias
+        assert config.num_blocks is not None and config.patch_size is not None and config.embedding_dim is not None and config.head_dim is not None
+        self.n_block = config.num_blocks
+        self.n_patch = config.img_size**2 / config.patch_size**2
+        self.n_embd = config.embedding_dim
+        self.h_size = config.head_dim
+        self.p_size = config.patch_size
+        self.im_size = config.img_size
+        self.c_dim = config.channel_dim
+        self.n_class = config.num_classes
+        self.h_dim = config.hidden_size if config.channel_dim else 4 * config.embedding_dim
+        self.d_rate = config.dropout_rate
+        self.bias = config.use_bias
 
         self.encoder = nn.ModuleDict(dict(
-            # pte = ViTConv2dEmbedding(n_embd=n_embd, p_size=p_size, c_dim=c_dim),
-            pte = ViTLNEmbedding(n_embd=n_embd, p_size=p_size, c_dim=c_dim),
-            ppe = ViTPosEncoding(n_embd=n_embd, p_size=p_size, im_size=im_size),
-            dropout = nn.Dropout(d_rate),
+            # pte = ViTConv2dEmbedding(n_embd=self.n_embd, p_size=self.p_size, c_dim=self.c_dim),
+            pte = ViTLNEmbedding(n_embd=self.n_embd, p_size=self.p_size, c_dim=self.c_dim),
+            ppe = ViTPosEncoding(n_embd=self.n_embd, p_size=self.p_size, im_size=self.im_size),
+            dropout = nn.Dropout(self.d_rate),
             blocks = nn.ModuleList([
                 ViTBlock(
                     n_patch=self.n_patch,
@@ -37,17 +38,17 @@ class VisionTransformer(nn.Module):
                     h_dim=self.h_dim,
                     d_rate=self.d_rate,
                     bias=self.bias)
-                for _ in range(n_block)]),
-            ln = ViTLayerNorm(n_embd, bias=bias),
+                for _ in range(self.n_block)]),
+            ln = ViTLayerNorm(self.n_embd, bias=self.bias),
         ))
 
-        self.lm_head = nn.Linear(n_embd, n_class, bias=bias)
+        self.lm_head = nn.Linear(self.n_embd, self.n_class, bias=self.bias)
         # self.encoder.pte.weight = self.lm_head.weight
         self.apply(self._init_weights)
 
         for par_name, par in self.named_parameters():
             if par_name.endswith('c_proj.weight'):
-                torch.nn.init.normal_(par, mean=0.0, std=0.02/math.sqrt(2 * n_block))
+                torch.nn.init.normal_(par, mean=0.0, std=0.02/math.sqrt(2 * self.n_block))
 
         print("number of parameters: %.2fM" % (self.get_num_params()/1e6,))
 
@@ -88,10 +89,7 @@ class VisionTransformer(nn.Module):
             'bias': self.bias
         }
             
-    def forward(self, x, y=None):
-        device = x.device
-        B, C, H, W = x.shape
-
+    def forward(self, x):
         x = self.encoder.pte(x)
         x = self.encoder.ppe(x)
 

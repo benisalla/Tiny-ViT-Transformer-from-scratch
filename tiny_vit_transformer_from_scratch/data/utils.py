@@ -1,4 +1,7 @@
-
+import math
+import os
+from matplotlib import pyplot as plt
+import numpy as np
 
 
 def disp_img(img):
@@ -79,3 +82,17 @@ def show_one_image(dataloader, classes):
     img_class = out_batch[0].item()
     class_name = classes[img_class]
     imshow(img=img, title=class_name)
+    
+
+def filter_images_per_class(data_dir, classes, max_img_cls=None):
+    class_to_idx = {cls_name: i for i, cls_name in enumerate(classes)}
+    filtered_data = []
+    for class_name in classes:
+        class_dir = os.path.join(data_dir, class_name)
+        if os.path.isdir(class_dir):
+            images = os.listdir(class_dir)[:max_img_cls]
+            for img_name in images:
+                img_path = os.path.join(class_dir, img_name)
+                item = (img_path, class_to_idx[class_name])
+                filtered_data.append(item)
+    return filtered_data

@@ -11,6 +11,8 @@ torch = "^2.3.0"
 einops = "^0.8.0"
 matplotlib = "^3.8.4"
 ipython = "^8.24.0"
+torchvision = "^0.18.0"
+scikit-learn = "^1.4.2"
 
 
 [build-system]
