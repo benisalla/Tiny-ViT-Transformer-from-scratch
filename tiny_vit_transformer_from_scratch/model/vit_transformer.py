@@ -1,29 +1,67 @@
-from tiny_vit_transformer_from_scratch.core.config import VitConfig
-from tiny_vit_transformer_from_scratch.model.vit_block import ViTBlock
-from tiny_vit_transformer_from_scratch.model.vit_embedding import ViTConv2dEmbedding, ViTLNEmbedding
-from tiny_vit_transformer_from_scratch.model.vit_layernorm import ViTLayerNorm
-from tiny_vit_transformer_from_scratch.model.vit_pos_encoding import ViTPosEncoding
+from core.config import VitConfig
+from model.vit_block import ViTBlock
+from model.vit_embedding import ViTConv2dEmbedding, ViTLNEmbedding
+from model.vit_layernorm import ViTLayerNorm
+from model.vit_pos_encoding import ViTPosEncoding
 import torch
-from torch.nn import nn
+import torch.nn as nn
 import math
 
 
 class VisionTransformer(nn.Module):
+    
+    """
+    A Vision Transformer (ViT) model implementation utilizing PyTorch. This class encapsulates
+    the entire architecture of a ViT, including embeddings, positional encodings, transformer
+    blocks, and layer normalization.
+
+    Attributes:
+        n_block (int): Number of transformer blocks.
+        n_embd (int): Dimensionality of the embeddings.
+        h_size (int): Dimensionality of the multi-head attention heads.
+        p_size (int): Size of each image patch.
+        im_size (int): Size of the input images.
+        c_dim (int): Channel dimension of the input.
+        n_class (int): Number of output classes.
+        d_rate (float): Dropout rate.
+        bias (bool): Whether to use bias in the linear layers.
+        h_dim (int): Hidden dimensionality, dependent on c_dim.
+        encoder (nn.ModuleDict): A module dict containing all the transformer components.
+        lm_head (nn.Linear): Output linear layer that maps transformer output to class logits.
+
+    Methods:
+        get_num_params (bool): Calculates the total number of trainable parameters in the model.
+        _init_weights (module): Applies a specific initialization to the weights of various modules
+                                in the transformer based on the module type.
+        forward (x): Defines the forward pass of the Vision Transformer.
+    """
 
     def __init__(self, config: VitConfig):
         super(VisionTransformer, self).__init__()
-        assert config.num_blocks is not None and config.patch_size is not None and config.embedding_dim is not None and config.head_dim is not None
-        self.n_block = config.num_blocks
-        self.n_patch = config.img_size**2 / config.patch_size**2
-        self.n_embd = config.embedding_dim
+        """
+        Initializes the Vision Transformer model with the specified configuration.
+
+        Args:
+            config (VitConfig): Configuration object containing attributes like number of blocks,
+                                dimensions of embeddings, etc.
+        """
+        super(VisionTransformer, self).__init__()
+        assert config.n_block is not None and config.p_size is not None and \
+                config.embd_dim is not None and config.head_dim is not None, \
+                "Configuration must include n_block, p_size, embd_dim, and head_dim."
+
+        # Model parameters and architecture configuration
+        self.n_block = config.n_block
+        self.n_embd = config.embd_dim
         self.h_size = config.head_dim
-        self.p_size = config.patch_size
-        self.im_size = config.img_size
-        self.c_dim = config.channel_dim
-        self.n_class = config.num_classes
-        self.h_dim = config.hidden_size if config.channel_dim else 4 * config.embedding_dim
-        self.d_rate = config.dropout_rate
-        self.bias = config.use_bias
+        self.p_size = config.p_size
+        self.im_size = config.im_size
+        self.c_dim = config.c_dim
+        self.n_class = config.n_class
+        self.d_rate = config.d_rate
+        self.bias = config.bias
+        self.n_patch = config.im_size**2 / config.p_size**2
+        self.h_dim = config.hide_dim if config.c_dim else 4 * config.embd_dim
 
         self.encoder = nn.ModuleDict(dict(
             # pte = ViTConv2dEmbedding(n_embd=self.n_embd, p_size=self.p_size, c_dim=self.c_dim),
@@ -53,12 +91,27 @@ class VisionTransformer(nn.Module):
         print("number of parameters: %.2fM" % (self.get_num_params()/1e6,))
 
         
-    def get_num_params(self, non_embedding=True):
+    def get_num_params(self):
+        """
+        Returns the total number of trainable parameters in the model.
+
+        Args:
+            non_embedding (bool): If True, excludes embedding parameters from the count.
+
+        Returns:
+            int: Total number of parameters.
+        """
         n_params = sum(p.numel() for p in self.parameters())
         return n_params
 
     
     def _init_weights(self, module):
+        """
+        Applies initial weights to certain types of layers within the model.
+
+        Args:
+            module (nn.Module): The module to potentially initialize.
+        """
         std = 0.02  
         if isinstance(module, (nn.Linear, nn.Conv2d)):
             torch.nn.init.normal_(module.weight, mean=0.0, std=std)
@@ -90,6 +143,16 @@ class VisionTransformer(nn.Module):
         }
             
     def forward(self, x):
+        """
+        Defines the forward pass of the Vision Transformer.
+
+        Args:
+            x (Tensor): Input tensor of shape (batch_size, channels, height, width).
+
+        Returns:
+            Tensor: The output logits of the Vision Transformer.
+        """
+        
         x = self.encoder.pte(x)
         x = self.encoder.ppe(x)
 
