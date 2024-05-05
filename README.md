@@ -1,27 +1,11 @@
 # TINY-ViT: Vision Transformer from Scratch
 
-## Introduction
-TINY-ViT offers a minimalist, yet complete implementation of the Vision Transformer (ViT) architecture for computer vision tasks. This project aims to provide a clear and structured approach to building Vision Transformers, making it accessible for educational purposes and practical applications alike.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div align="center">
   <img src="https://yourimageurl.com/logo.png" width="200" height="200"/>
   <h1>TINY-ViT: Vision Transformer from Scratch</h1>
-  <p>Implementing a Vision Transformer model from the ground up.</p>
+  <p>Implementing a Vision Transformer model from the scratch.</p>
 
   <a href="https://github.com/yourusername/tiny-vit-transformer-from-scratch"><strong>Explore the docs »</strong></a>
   <br />
@@ -49,6 +33,8 @@ TINY-ViT offers a minimalist, yet complete implementation of the Vision Transfor
 ## 📘 Table of Contents
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
+  - [Features](#features)
+  - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
 - [Usage](#usage)
@@ -63,12 +49,23 @@ TINY-ViT offers a minimalist, yet complete implementation of the Vision Transfor
 
 
 
-
-
 ---
 
 
 
+## 📖 About The Project
+
+<div align="center">
+  <img src="https://yourimageurl.com/vit-architecture.png" width="600" height="300"/>
+</div>
+
+TINY-ViT offers a minimalist, yet complete implementation of the Vision Transformer (ViT) architecture for computer vision tasks. This project aims to provide a clear and structured approach to building Vision Transformers, making it accessible for educational purposes and practical applications alike.
+
+
+
+
+
+---
 
 
 
@@ -81,6 +78,8 @@ TINY-ViT offers a minimalist, yet complete implementation of the Vision Transfor
 
 
 ---
+
+
 
 
 
@@ -104,17 +103,8 @@ TINY-VIT-TRANSFORMER-FROM-SCRATCH
 
 
 
+
 ---
-
-
-
-## 📖 About The Project
-
-<div align="center">
-  <img src="https://yourimageurl.com/vit-architecture.png" width="600" height="300"/>
-</div>
-
-TINY-ViT offers a minimalist, yet complete implementation of the Vision Transformer (ViT) architecture for computer vision tasks. This project aims to provide a clear and structured approach to building Vision Transformers, making it accessible for educational purposes and practical applications alike.
 
 
 
