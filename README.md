@@ -214,6 +214,26 @@ Contributions are welcome! For major changes, please open an issue first to disc
 
 
 
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+```bibtex
+@misc{tiny_vit_2023,
+  title={TINY-ViT: Vision Transformer from Scratch},
+  author={Ben alla ismail},
+  year={2023},
+  url={https://github.com/yourusername/tiny-vit-transformer-from-scratch}
+}
+```
+
+
+
+
+---
+
+
+
+
 
 ## Authors ✍️
 
@@ -246,19 +266,6 @@ This project owes its success to the invaluable support and resources provided b
 
 
 
-
-
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-```bibtex
-@misc{tiny_vit_2023,
-  title={TINY-ViT: Vision Transformer from Scratch},
-  author={Ben alla ismail},
-  year={2023},
-  url={https://github.com/yourusername/tiny-vit-transformer-from-scratch}
-}
-```
 
 
 
