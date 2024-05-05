@@ -1,7 +1,3 @@
-Thank you for sharing the project structure. Based on the provided directory layout and the fact that you are using Poetry for dependency management, here's an enhanced version of the README.md tailored for your setup:
-
----
-
 # TINY-ViT: Vision Transformer from Scratch
 
 ## Introduction
