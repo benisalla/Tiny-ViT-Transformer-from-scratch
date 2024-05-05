@@ -307,6 +307,12 @@ This project owes its success to the invaluable support and resources provided b
     <img align="center" src="https://raw.githubusercontent.com/username/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="yourusername" height="30" width="40" />
   </a>
   <a href="https://linkedin.com/in/yourlinkedinprofile" target="blank">
-    <img align="center" src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/3ec28013-29bc-457d-96de-181c68758e30.gif" alt="yourlinkedinprofile" height="30" width="40" />
+    <img align="center" src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/190d5236-546a-451d-a0c8-32a0d302b837" alt="yourlinkedinprofile" height="30" width="40" />
   </a>
 </div>
+
+
+
+
+
+![17a3effbfcfc3e2fc1f23e512cff50bb](https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/190d5236-546a-451d-a0c8-32a0d302b837)
