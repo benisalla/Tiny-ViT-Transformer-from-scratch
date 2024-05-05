@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/4935a979-a8e8-40f0-8ffb-e621025aac2f" width="200" height="200"/>
+  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/035598be-ea1c-4501-947a-ff51524e78ef" width="200" height="200"/>
   <h1>TINY-ViT: Vision Transformer from Scratch</h1>
   <p>Implementing a Vision Transformer model from the scratch.</p>
 </div>
@@ -44,7 +44,7 @@
 ## About The Project
 
 <div align="center">
-  <img src="https://yourimageurl.com/vit-architecture.png" width="600" height="300"/>
+  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/4935a979-a8e8-40f0-8ffb-e621025aac2f" width="600" height="300"/>
 </div>
 
 TINY-ViT offers a minimalist, yet complete implementation of the Vision Transformer (ViT) architecture for computer vision tasks. This project aims to provide a clear and structured approach to building Vision Transformers, making it accessible for educational purposes and practical applications alike.
