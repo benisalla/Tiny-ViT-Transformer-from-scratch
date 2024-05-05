@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="https://yourimageurl.com/logo.png" width="200" height="200"/>
+  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/da9b9c10-f770-4258-a825-98d060c74f97" width="200" height="200"/>
   <h1>TINY-ViT: Vision Transformer from Scratch</h1>
   <p>Implementing a Vision Transformer model from the scratch.</p>
 </div>
+
 
 
 
