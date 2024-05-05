@@ -2,15 +2,6 @@
   <img src="https://yourimageurl.com/logo.png" width="200" height="200"/>
   <h1>TINY-ViT: Vision Transformer from Scratch</h1>
   <p>Implementing a Vision Transformer model from the scratch.</p>
-
-  <a href="https://github.com/yourusername/tiny-vit-transformer-from-scratch"><strong>Explore the docs »</strong></a>
-  <br />
-  <br />
-  <a href="https://drive.google.com/file/d/yourvideoid/view?usp=sharing">View Demo</a>
-  ·
-  <a href="https://github.com/yourusername/tiny-vit-transformer-from-scratch/issues">Report Bug</a>
-  ·
-  <a href="https://github.com/yourusername/tiny-vit-transformer-from-scratch/issues">Request Feature</a>
 </div>
 
 
@@ -28,14 +19,14 @@
 
 ## Table of Contents 📘
 - [About The Project](#about-the-project)
-  - [Built With](#built-with)
-  - [Features](#features)
-  - [Project Structure](#project-structure)
+- [Built With](#built-with)
+- [Features](#features)
+- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-  - [Installation](#installation)
+- [Installation](#installation)
 - [Usage](#usage)
-  - [Training](#training)
-  - [Fine-Tuning](#fine-tuning)
+- [Training](#training)
+- [Fine-Tuning](#fine-tuning)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
