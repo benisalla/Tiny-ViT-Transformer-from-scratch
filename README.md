@@ -300,19 +300,38 @@ This project owes its success to the invaluable support and resources provided b
 
 
 
+## About Me
+
+🎓 **Ismail Ben Alla** - Neural Network Enthusiast
+
+I am deeply passionate about exploring artificial intelligence and its potential to solve complex problems and unravel the mysteries of our universe. My academic and professional journey is characterized by a commitment to learning and innovation in AI, deep learning, and machine learning.
+
+### What Drives Me
+- **Passion for AI**: Eager to push the boundaries of technology and discover new possibilities.
+- **Continuous Learning**: Committed to staying informed and skilled in the latest advancements.
+- **Optimism and Dedication**: Motivated by the challenges and opportunities that the future of AI holds.
+
+I thoroughly enjoy what I do and am excited about the future of AI and machine learning. Let's connect and explore the endless possibilities of artificial intelligence together!
+
 
 <div align="center">
-  <h3>Let's connect and explore the fascinating world of artificial intelligence together! 🤖🌟</h3>
-  <a href="https://twitter.com/yourusername" target="blank">
-    <img align="center" src="https://raw.githubusercontent.com/username/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="yourusername" height="30" width="40" />
+  <a href="https://twitter.com/ismail_ben_alla" target="blank">
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="ismail_ben_alla" height="30" width="40" />
   </a>
-  <a href="https://linkedin.com/in/yourlinkedinprofile" target="blank">
-    <img align="center" src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/190d5236-546a-451d-a0c8-32a0d302b837" alt="yourlinkedinprofile" height="30" width="40" />
+  <a href="https://linkedin.com/in/ismail-ben-alla-7144b5221/" target="blank">
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ismail-ben-alla-7144b5221/" height="30" width="40" />
+  </a>
+  <a href="https://instagram.com/ismail_ben_alla" target="blank">
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="ismail_ben_alla" height="30" width="40" />
   </a>
 </div>
 
 
 
+---
 
 
-![17a3effbfcfc3e2fc1f23e512cff50bb](https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/190d5236-546a-451d-a0c8-32a0d302b837)
+<div align="center">
+  <h4>You are about to witness some pure magic ✨🎩 !! Ta-da!</h4>
+  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/087e0049-d113-4df6-8fb3-183ebc4f85e1" width="500" height="300"/>
+</div>
