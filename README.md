@@ -1,7 +1,3 @@
-# TINY-ViT: Vision Transformer from Scratch
-
-
-
 <div align="center">
   <img src="https://yourimageurl.com/logo.png" width="200" height="200"/>
   <h1>TINY-ViT: Vision Transformer from Scratch</h1>
