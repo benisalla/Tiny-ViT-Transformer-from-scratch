@@ -309,7 +309,6 @@ This project owes its success to the invaluable support and resources provided b
   <a href="https://
 
 linkedin.com/in/yourlinkedinprofile" target="blank">
-    <img align="center" src="https://raw.githubusercontent.com/username/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="yourlinkedinprofile" height="30" width="40" />
+    <img align="center" src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/3ec28013-29bc-457d-96de-181c68758e30" alt="yourlinkedinprofile" height="30" width="40" />
   </a>
 </div>
-
