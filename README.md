@@ -26,7 +26,7 @@
 
 
 
-## 📘 Table of Contents
+## Table of Contents 📘
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
   - [Features](#features)
@@ -49,7 +49,7 @@
 
 
 
-## 📖 About The Project
+## About The Project 📖
 
 <div align="center">
   <img src="https://yourimageurl.com/vit-architecture.png" width="600" height="300"/>
@@ -146,7 +146,7 @@ To get a local copy up and running follow these simple steps.
 
 
 
-## 📐 Usage
+## Usage 📐
 
 For more examples, please refer to the [Documentation](https://example.com)
 
@@ -180,7 +180,7 @@ poetry run python finetune.py
 
 
 
-## 🗺 Roadmap
+## Roadmap 🗺
 
 See the [open issues](https://github.com/yourusername/tiny-vit-transformer-from-scratch/issues) for a list of proposed features (and known issues).
 
@@ -194,7 +194,7 @@ See the [open issues](https://github.com/yourusername/tiny-vit-transformer-from-
 
 
 
-## 🤝 Contributing
+## Contributing 🤝 
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -208,20 +208,6 @@ Contributions are welcome! For major changes, please open an issue first to disc
 
 
 
----
-
-
-
-
-
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-
 
 ---
 
@@ -229,7 +215,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
-## ✍️ Authors
+## Authors ✍️
 
 - [the one and the only me](https://github.com/yourusername) - Initial work but waiting for any contribution
 
@@ -241,7 +227,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
-## 🎉 Acknowledgements
+## Acknowledgements 🎉
 
 This project owes its success to the invaluable support and resources provided by several individuals and organizations. A heartfelt thank you to:
 
