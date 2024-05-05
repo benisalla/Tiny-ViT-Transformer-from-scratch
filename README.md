@@ -343,6 +343,6 @@ I thoroughly enjoy what I do and am excited about the future of AI and machine l
 
 
 <div align="center">
-  <h4>You are about to witness some pure magic ✨🎩 !! Ta-da!</h4>
+  <h4>Get ready to see pixels transform into insights 🌟🔍✨</h4>
   <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/087e0049-d113-4df6-8fb3-183ebc4f85e1" width="500" height="300"/>
 </div>
