@@ -67,9 +67,49 @@ TINY-ViT offers a minimalist, yet complete implementation of the Vision Transfor
 
 
 ## Features
+
 - **Modular Design**: Clear separation of components like data processing, model architecture, and training routines.
 - **Customizable**: Easy to adapt the architecture and data pipeline for various datasets and applications.
 - **Poetry Dependency Management**: Utilizes Poetry for simple and reliable package management.
+- **Advanced Embedding Techniques**: Implements three distinct techniques for image embedding in Vision Transformers:
+  - **ViTConv2dEmbedding**: Utilizes a Conv2D layer to transform input images into a sequence of flattened 2D patches, with a learnable class token appended.
+  - **ViTLNEmbedding**: Applies layer normalization to flattened input patches before projecting them into an embedding space, enhancing stability and performance.
+  - **ViTPyCon2DEmbedding**: Offers a unique tensor reshaping strategy to transform input images into a sequence of embedded patches, also including a learnable class token.
+- **Custom Activation Function**: Incorporates the **ViTGELUActFun** class, which implements the Gaussian Error Linear Unit (GELU), providing smoother gating behavior than traditional nonlinearities like ReLU.
+
+---
+
+### ViTConv2dEmbedding
+```python
+class ViTConv2dEmbedding(nn.Module):
+```
+
+### ViTLNEmbedding
+```python
+class ViTLNEmbedding(nn.Module):
+```
+
+### ViTPyCon2DEmbedding
+```python
+class ViTPyCon2DEmbedding(nn.Module):
+```
+
+### ViTGELUActFun Activation Function
+```python
+class ViTGELUActFun(nn.Module):
+    # class details...
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -129,7 +169,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/yourusername/tiny-vit-transformer-from-scratch.git
+   git clone https://github.com/benisalla/tiny-vit-transformer-from-scratch.git
    ```
 2. Install Poetry packages
    ```sh
