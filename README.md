@@ -214,7 +214,7 @@ poetry run python finetune.py
 
 ## Roadmap
 
-See the [open issues](https://github.com/yourusername/tiny-vit-transformer-from-scratch/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/benisalla/tiny-vit-transformer-from-scratch/issues) for a list of proposed features (and known issues).
 
 
 
@@ -246,35 +246,46 @@ Contributions are welcome! For major changes, please open an issue first to disc
 
 
 
+
 ## License
-Distributed under the MIT License. See `LICENSE` for more information.
+
+This project is made available under **fair use guidelines**. While there is no formal license associated with the repository, users are encouraged to credit the source if they utilize or adapt the code in their work. This approach promotes ethical practices and contributions to the open-source community. For citation purposes, please use the following:
 
 ```bibtex
-@misc{tiny_vit_2023,
+@misc{tiny_vit_2024,
   title={TINY-ViT: Vision Transformer from Scratch},
-  author={Ben alla ismail},
-  year={2023},
-  url={https://github.com/yourusername/tiny-vit-transformer-from-scratch}
+  author={Ben Alla Ismail},
+  year={2024},
+  url={https://github.com/benisalla/tiny-vit-transformer-from-scratch}
 }
 ```
 
 
 
 
+
+---
+
+
+
+
+
+## Authors
+
+- **Ismail Ben Alla (Me  😉)** - [View My GitHub Profile](https://github.com/benisalla)
+
+As the creator of TINY-ViT, I am open to collaborations and contributions that help enhance this project. Your input is invaluable in making this a robust and versatile tool for everyone interested in Vision Transformer architectures.
+
+
+
+
+
+
+
 ---
 
 
 
-
-
-## Authors 
-
-- [the one and the only me](https://github.com/yourusername) - Initial work but waiting for any contribution
-
-
-
-
----
 
 
 
