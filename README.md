@@ -283,8 +283,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 This project owes its success to the invaluable support and resources provided by several individuals and organizations. A heartfelt thank you to:
 
-- **Asmae El-Ghezzaz** - For inviting me to be a member of Moroccan Data Scientists (MDS), where I had the opportunity to develop this project. Connect with Asmae on [LinkedIn](https://www.linkedin.com/in/asmae-el-ghezzaz).
-- **Moroccan Data Scientists (MDS)** - Although I am no longer a member, I hold great admiration for the community and wish it continued success. Learn more about MDS on their [LinkedIn page](https://www.linkedin.com/company/moroccands).
+- [**Asmae El-Ghezzaz**](https://www.linkedin.com/in/asmae-el-ghezzaz) - For inviting me to be a member of Moroccan Data Scientists (MDS), where I had the opportunity to develop this project.
+- [**Moroccan Data Scientists (MDS)**](https://www.linkedin.com/company/moroccands) - Although I am no longer a member, I hold great admiration for the community and wish it continued success.
 - [**PyTorch**](https://pytorch.org/) - For the powerful and flexible deep learning platform that has made implementing models a smoother process.
 - [**Kaggle**](https://www.kaggle.com/) - For providing the datasets used in training our models and hosting competitions that inspire our approaches.
 - [**Google Colab**](https://colab.research.google.com/) - For the computational resources that have been instrumental in training and testing our models efficiently.
