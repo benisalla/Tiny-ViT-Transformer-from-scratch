@@ -30,9 +30,11 @@
 - [Fine-Tuning](#fine-tuning)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [License](#license)
+- [Contributors](#contributors)
 - [Authors](#authors)
 - [Acknowledgements](#acknowledgements)
+- [License](#license)
+- [About Me](#about-me)
 
 
 
@@ -89,7 +91,6 @@ class ViTPyCon2DEmbedding(nn.Module):
 ### ViTGELUActFun Activation Function
 ```python
 class ViTGELUActFun(nn.Module):
-    # class details...
 ```
 
 
@@ -206,6 +207,27 @@ poetry run python finetune.py
 
 
 
+
+---
+
+
+
+
+
+## Model Performance
+
+The tiny-vit model was evaluated on a comprehensive set of test images to gauge its accuracy and performance. Here are the results:
+
+- **Accuracy on test images**: 81.60%
+
+These results demonstrate the effectiveness of the tiny-vit model in handling complex image recognition tasks. We continuously seek to improve the model and update the metrics as new test results become available.
+
+![image](https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/62531c3f-6684-4000-a151-acee6a399ab3)
+
+![image](https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/7aafbd0a-f48b-46dd-9caf-d99f42e063e3)
+
+
+
 ---
 
 
@@ -247,20 +269,40 @@ Contributions are welcome! For major changes, please open an issue first to disc
 
 
 
-## License
-
-This project is made available under **fair use guidelines**. While there is no formal license associated with the repository, users are encouraged to credit the source if they utilize or adapt the code in their work. This approach promotes ethical practices and contributions to the open-source community. For citation purposes, please use the following:
-
-```bibtex
-@misc{tiny_vit_2024,
-  title={TINY-ViT: Vision Transformer from Scratch},
-  author={Ben Alla Ismail},
-  year={2024},
-  url={https://github.com/benisalla/tiny-vit-transformer-from-scratch}
-}
-```
 
 
+## Contributors
+
+- **Asmae El-Ghezzaz** - Data Scientist/ML
+  - [GitHub](https://github.com/aelghezzaz)
+  - Contributions: Provided expertise in machine learning and data science methodologies.
+
+- **Idriss El Houari** - Data Scientist
+  - [GitHub](https://github.com/idrisselhouari)
+  - [Kaggle](https://www.kaggle.com/idrisselhouari)
+  - Contributions: Curated the plant disease dataset and developed the initial analysis notebook.
+  
+- **Farheen Akhter** - Graduate Student at California State University
+  - [GitHub](https://github.com/FarheenAkhter786)
+  - [Kaggle](https://www.kaggle.com/feenuakhter)
+  - Contributions: Worked on improving crop yield and pest/disease detection through data analytics. Provided dataset and analytical insights on local farms in Ghana.
+
+- **Aicha Dessa** - Data Scientist Intern
+  - [GitHub](https://github.com/aichadessa06)
+  - [Kaggle](https://www.kaggle.com/aichadessa)
+  - Contributions: Analyzed plant disease recognition data and contributed to model training and testing processes.
+  
+- **Zeroual Salma** - Student at Agronomic and Veterinary Institute Hassan II
+  - [GitHub](https://github.com/salmazl)
+  - Contributions: Focused on plant pathology and contributed to dataset analysis and insights into Botrytis disease.
+  
+- **El Fakir Chaimae** - Master's Student in Artificial Intelligence
+  - [GitHub](https://github.com/chaimaeelfakir)
+  - Contributions: Provided datasets on pathogen detection and collaborated on developing AI models for disease prediction.
+  
+- **Laghbissi Salma** - Master's Student in Software Engineering for Cloud Computing
+  - [GitHub](https://github.com/salma-laghbissi)
+  - Contributions: Researched on plant pathologies and contributed significantly to the dataset understanding and processing.
 
 
 
@@ -270,14 +312,12 @@ This project is made available under **fair use guidelines**. While there is no 
 
 
 
+
+
 ## Authors
 
 - **Ismail Ben Alla (Me  😉)** - [View My GitHub Profile](https://github.com/benisalla)
-
-As the creator of TINY-ViT, I am open to collaborations and contributions that help enhance this project. Your input is invaluable in making this a robust and versatile tool for everyone interested in Vision Transformer architectures.
-
-
-
+- **Asmae El-Ghezzaz (a friend of mine)** - special thanks for her help and advices about the documentation
 
 
 
@@ -296,6 +336,7 @@ This project owes its success to the invaluable support and resources provided b
 
 - [**Asmae El-Ghezzaz**](https://www.linkedin.com/in/asmae-el-ghezzaz) - For inviting me to be a member of Moroccan Data Scientists (MDS), where I had the opportunity to develop this project.
 - [**Moroccan Data Scientists (MDS)**](https://www.linkedin.com/company/moroccands) - Although I am no longer a member, I hold great admiration for the community and wish it continued success.
+- **Pests and Vigitebles Diseased Detection Team in MDS** - Aicha, hiba, idriss, farheen, asmae, ...
 - [**PyTorch**](https://pytorch.org/) - For the powerful and flexible deep learning platform that has made implementing models a smoother process.
 - [**Kaggle**](https://www.kaggle.com/) - For providing the datasets used in training our models and hosting competitions that inspire our approaches.
 - [**Google Colab**](https://colab.research.google.com/) - For the computational resources that have been instrumental in training and testing our models efficiently.
@@ -304,8 +345,33 @@ This project owes its success to the invaluable support and resources provided b
 
 
 
+
 ---
 
+
+
+
+
+
+
+## License
+
+This project is made available under **fair use guidelines**. While there is no formal license associated with the repository, users are encouraged to credit the source if they utilize or adapt the code in their work. This approach promotes ethical practices and contributions to the open-source community. For citation purposes, please use the following:
+
+```bibtex
+@misc{tiny_vit_2024,
+  title={TINY-ViT: Vision Transformer from Scratch},
+  author={Ben Alla Ismail},
+  year={2024},
+  url={https://github.com/benisalla/tiny-vit-transformer-from-scratch}
+}
+```
+
+
+
+
+
+---
 
 
 
