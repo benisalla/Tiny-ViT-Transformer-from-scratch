@@ -67,32 +67,22 @@ TINY-ViT offers a minimalist, yet complete implementation of the Vision Transfor
 - **Poetry Dependency Management**: Utilizes Poetry for simple and reliable package management.
 - **Advanced Embedding Techniques**: Implements three distinct techniques for image embedding in Vision Transformers:
   - **ViTConv2dEmbedding**: Utilizes a Conv2D layer to transform input images into a sequence of flattened 2D patches, with a learnable class token appended.
+  ```python
+  class ViTConv2dEmbedding(nn.Module):
+  ```
   - **ViTLNEmbedding**: Applies layer normalization to flattened input patches before projecting them into an embedding space, enhancing stability and performance.
+  ```python
+  class ViTLNEmbedding(nn.Module):
+  ``` 
   - **ViTPyCon2DEmbedding**: Offers a unique tensor reshaping strategy to transform input images into a sequence of embedded patches, also including a learnable class token.
+  ```python
+  class ViTPyCon2DEmbedding(nn.Module):
+  ```
+    
 - **Custom Activation Function**: Incorporates the **ViTGELUActFun** class, which implements the Gaussian Error Linear Unit (GELU), providing smoother gating behavior than traditional nonlinearities like ReLU.
-
----
-
-### ViTConv2dEmbedding
-```python
-class ViTConv2dEmbedding(nn.Module):
-```
-
-### ViTLNEmbedding
-```python
-class ViTLNEmbedding(nn.Module):
-```
-
-### ViTPyCon2DEmbedding
-```python
-class ViTPyCon2DEmbedding(nn.Module):
-```
-
-### ViTGELUActFun Activation Function
-```python
-class ViTGELUActFun(nn.Module):
-```
-
+  ```python
+  class ViTGELUActFun(nn.Module):
+  ```
 
 
 
