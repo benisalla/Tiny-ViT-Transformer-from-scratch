@@ -317,7 +317,7 @@ Contributions are welcome! For major changes, please open an issue first to disc
 ## Authors
 
 - **Ismail Ben Alla (Me  😉)** - [View My GitHub Profile](https://github.com/benisalla)
-- **Asmae El-Ghezzaz (a friend of mine)** - special thanks for her help and advices about the documentation
+- **Asmae El-Ghezzaz (a friend of mine)** - deserves a special thanks for her help and advices
 
 
 
