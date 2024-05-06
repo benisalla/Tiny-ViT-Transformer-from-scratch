@@ -123,3 +123,38 @@ def filter_images_per_class(data_dir, classes, max_img_cls=None):
             images = os.listdir(class_dir)[:max_img_cls]
             filtered_data.extend((os.path.join(class_dir, img_name), class_to_idx[class_name]) for img_name in images)
     return filtered_data
+
+# Display a batch of images with predictions
+def show_batch_images_with_predictions(images, y_truths, y_preds, classes):
+    batch_size = images.size(0)  
+
+    n_rows = int(math.sqrt(batch_size))
+    n_cols = math.ceil(batch_size / n_rows)
+
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(n_cols * 3, n_rows * 3))
+    
+    if not isinstance(axes, np.ndarray):
+        axes = [axes]
+    else:
+        axes = axes.flatten()  
+    
+    for i in range(batch_size):
+        ax = axes[i]
+        img = images[i]
+        title = f'True: {classes[y_truths[i].item()]}\nPred: {classes[y_preds[i].item()]}'
+        imshow(img, title=title, ax=ax)
+    
+    for j in range(i + 1, n_rows*n_cols):
+        axes[j].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+# Function to display predictions for a single image
+def show_one_image(dataloader, classes, predictions):
+    in_batch, out_batch = next(iter(dataloader))
+    img = in_batch[0]
+    true_class = classes[out_batch[0].item()]
+    pred_class = classes[predictions[0].item()]
+    class_info = f'True: {true_class}, Pred: {pred_class}'
+    imshow(img=img, title=class_info)

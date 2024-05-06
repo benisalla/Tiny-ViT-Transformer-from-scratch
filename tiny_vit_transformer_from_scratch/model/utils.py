@@ -4,6 +4,9 @@ from IPython.display import display, clear_output
 import matplotlib.pyplot as plt
 from torch.nn.utils import clip_grad_norm_
 import math
+import torch.optim as optim
+from tiny_vit_transformer_from_scratch.data.utils import show_batch_images_with_predictions
+from tiny_vit_transformer_from_scratch.model.vit_transformer import VisionTransformer
 
 def lr_schedule(epoch, learning_rate, warmup_iters, total_iters, min_lr):
     """
@@ -30,6 +33,21 @@ def save_checkpoints(model, optimizer, save_ckpt_path, epoch):
     }
     torch.save(checkpoint, save_ckpt_path)
     print("\033[94mCheckpoints Saved Successfully :)\033[0m")
+    
+    
+def load_from_checkpoints(load_ckpt_path):
+    checkpoint = torch.load(load_ckpt_path)
+    
+    model = VisionTransformer(**checkpoint['model_args'])
+    model.load_state_dict(checkpoint['model'])
+    
+    optimizer = optim.AdamW(model.parameters())
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    epoch = checkpoint['epoch']
+    print("\033[94mCheckpoints Loaded Successfully :)\033[0m")
+    return model, optimizer, epoch
+        
+
 
 def train_epoch(model, train_loader, optimizer, criterion, device):
     """
@@ -96,3 +114,61 @@ def live_plot_dual(data_dict, figsize=(12,5), title=''):
     
     plt.suptitle(title)
     plt.show()
+
+def evaluate_visualize_model(model, test_loader, classes, device="cpu", visualize=True):
+    model.eval()
+    correct = 0
+    total = 0
+
+    with torch.no_grad():
+        for x, y_truth in test_loader:
+            x = x.to(device)
+            y_truth = y_truth.to(device)
+
+            logits = model(x)
+            _, y_pred = torch.max(logits.data, 1)
+
+            total += y_truth.size(0)
+            correct += (y_pred == y_truth).sum().item()
+
+            if visualize:  
+                show_batch_images_with_predictions(x.cpu(), y_truth.cpu(), y_pred.cpu(), classes)
+                break
+
+    accuracy = 100 * correct / total
+    print(f'Accuracy of the model on the test images: {accuracy:.2f}%')
+    
+    
+
+def evaluate_model(model, test_loader, device):
+    """
+    Evaluate the given model's accuracy on the test dataset.
+
+    Args:
+    model (torch.nn.Module): The neural network model to evaluate.
+    test_loader (torch.utils.data.DataLoader): The DataLoader for test data.
+    device (torch.device): The device (CPU or GPU) to run the evaluation on.
+
+    Returns:
+    float: The accuracy of the model on the test dataset.
+    """
+    model.eval()
+
+    correct = 0
+    total = 0
+    
+    with torch.no_grad():
+        for x, y_truth in test_loader:
+            x = x.to(device)
+            y_truth = y_truth.to(device)
+            
+            logits = model(x)
+            
+            _, y_pred = torch.max(logits.data, 1)
+            
+            total += y_truth.size(0)
+            correct += (y_pred == y_truth).sum().item()
+
+    accuracy = 100 * correct / total
+    print(f'Accuracy of the model on the test images: {accuracy:.2f}%')
+    return accuracy
