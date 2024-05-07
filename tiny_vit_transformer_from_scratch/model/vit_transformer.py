@@ -1,8 +1,8 @@
-from core.config import VitConfig
-from model.vit_block import ViTBlock
-from model.vit_embedding import ViTConv2dEmbedding, ViTLNEmbedding
-from model.vit_layernorm import ViTLayerNorm
-from model.vit_pos_encoding import ViTPosEncoding
+from tiny_vit_transformer_from_scratch.model.vit_block import ViTBlock
+from tiny_vit_transformer_from_scratch.model.vit_embedding import ViTConv2dEmbedding, ViTLNEmbedding
+from tiny_vit_transformer_from_scratch.model.vit_layernorm import ViTLayerNorm
+from tiny_vit_transformer_from_scratch.model.vit_pos_encoding import ViTPosEncoding
+from tiny_vit_transformer_from_scratch.core.config import VitConfig
 import torch
 import torch.nn as nn
 import math
@@ -52,8 +52,8 @@ class VisionTransformer(nn.Module):
 
         # Model parameters and architecture configuration
         self.n_block = config.n_block
-        self.n_embd = config.embd_dim
-        self.h_size = config.head_dim
+        self.n_embd = config.n_embd
+        self.h_size = config.h_size
         self.p_size = config.p_size
         self.im_size = config.im_size
         self.c_dim = config.c_dim
@@ -61,7 +61,7 @@ class VisionTransformer(nn.Module):
         self.d_rate = config.d_rate
         self.bias = config.bias
         self.n_patch = config.im_size**2 / config.p_size**2
-        self.h_dim = config.hide_dim if config.c_dim else 4 * config.embd_dim
+        self.h_dim = config.h_dim if config.c_dim else 4 * config.n_embd
 
         self.encoder = nn.ModuleDict(dict(
             # pte = ViTConv2dEmbedding(n_embd=self.n_embd, p_size=self.p_size, c_dim=self.c_dim),

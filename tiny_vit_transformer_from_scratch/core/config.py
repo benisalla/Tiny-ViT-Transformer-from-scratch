@@ -1,24 +1,24 @@
 import torch
 
 class VitConfig:
-    def __init__(self):        
+    def __init__(self):  
         self.batch_size = 16
-        self.embd_dim = 256 #512     # TODO: Adjust 
+        self.n_embd = 256 #512     # TODO: Adjust 
         self.n_block = 12            # TODO: Adjust 
-        self.head_dim = 32           # TODO: Adjust 
+        self.h_size = 32           # TODO: Adjust 
         self.p_size = 16
         self.c_dim = 3
         self.im_size = 128 # 256     # TODO: Adjust
         self.n_class = 4 # 10
         self.d_rate = 0.0   # Use 0.1 in fine-tuning
         self.bias = False
-        self.hide_dim = 6 * self.embd_dim  
+        self.h_dim = 6 * self.n_embd  
 
     def __repr__(self):
-        return  f"<Config batch_size={self.batch_size}, embedding_dim={self.embd_dim}, num_blocks={self.n_block}, " \
-                f"hidden_size={self.hide_dim}, patch_size={self.p_size}, channel_dim={self.c_dim}, " \
+        return  f"<Config batch_size={self.batch_size}, embedding_dim={self.n_embd}, num_blocks={self.n_block}, " \
+                f"hidden_size={self.h_dim}, patch_size={self.p_size}, channel_dim={self.c_dim}, " \
                 f"im_size={self.im_size}, num_classes={self.n_class}, dropout_rate={self.d_rate}, " \
-                f"use_bias={self.bias}, head_dim={self.head_dim}>"
+                f"use_bias={self.bias}, head_dim={self.h_size}>"
 
 
 class Config:

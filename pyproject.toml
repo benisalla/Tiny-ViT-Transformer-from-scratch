@@ -13,8 +13,13 @@ matplotlib = "^3.8.4"
 ipython = "^8.24.0"
 torchvision = "^0.18.0"
 scikit-learn = "^1.4.2"
+streamlit = "^1.34.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start-streamlit = "tiny_vit_transformer_from_scratch.app.main:main"
+

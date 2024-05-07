@@ -1,5 +1,5 @@
 import torch.nn as nn
-from model.vit_glu_act_fun import ViTGELUActFun
+from tiny_vit_transformer_from_scratch.model.vit_glu_act_fun import ViTGELUActFun
 
 class ViTFeedForwardMLP(nn.Module):
     """
