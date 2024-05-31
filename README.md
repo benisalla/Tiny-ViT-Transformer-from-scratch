@@ -7,6 +7,15 @@
 
 
 
+<div align="center">
+  <h5>A little demo</h5>
+  <a href="https://drive.google.com/file/d/1WCw1KVkyRMDi6tyq13PI5Q9MMekAEF3T/view?usp=sharing">
+    <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/7eee6f0b-a58a-4ee7-9ceb-06c1d854d847.png" width="600" height="350" alt="Explanatory Video"/>
+  </a>
+</div>
+
+
+
 
 
 
