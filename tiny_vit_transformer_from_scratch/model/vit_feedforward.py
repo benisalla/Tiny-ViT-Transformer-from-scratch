@@ -29,12 +29,15 @@ class ViTFeedForwardMLP(nn.Module):
         super(ViTFeedForwardMLP, self).__init__()
 
         if not h_dim:
-            h_dim = 4 * n_embd 
+            h_dim = 6 * n_embd 
 
+        # by mistake the model train with: h_dim = 4 * n_embd 
+        # so to load pre-trained model i will use 4 * n_embd instead of h_dim
+        # notice that h_dim=3072 however it is 2048
         self.vit_mlp = nn.Sequential(
-            nn.Linear(n_embd, h_dim, bias=bias),  
+            nn.Linear(n_embd, 4 * n_embd, bias=bias),  
             nn.GELU(),  # GELU activation function (can replace with ViTGELUActFun() if custom implementation is needed)
-            nn.Linear(h_dim, n_embd, bias=bias), 
+            nn.Linear(4 * n_embd, n_embd, bias=bias), 
             nn.Dropout(d_rate),  
         )
 

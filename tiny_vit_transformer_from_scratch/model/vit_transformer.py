@@ -36,7 +36,7 @@ class VisionTransformer(nn.Module):
         forward (x): Defines the forward pass of the Vision Transformer.
     """
 
-    def __init__(self, config: VitConfig):
+    def __init__(self, n_block, n_embd, h_size, p_size, im_size, c_dim, n_class, h_dim=None, d_rate=0.0, bias=False):
         super(VisionTransformer, self).__init__()
         """
         Initializes the Vision Transformer model with the specified configuration.
@@ -46,22 +46,21 @@ class VisionTransformer(nn.Module):
                                 dimensions of embeddings, etc.
         """
         super(VisionTransformer, self).__init__()
-        assert config.n_block is not None and config.p_size is not None and \
-                config.embd_dim is not None and config.head_dim is not None, \
+        assert n_block is not None and p_size is not None and \
+                n_embd is not None and h_size is not None, \
                 "Configuration must include n_block, p_size, embd_dim, and head_dim."
 
-        # Model parameters and architecture configuration
-        self.n_block = config.n_block
-        self.n_embd = config.n_embd
-        self.h_size = config.h_size
-        self.p_size = config.p_size
-        self.im_size = config.im_size
-        self.c_dim = config.c_dim
-        self.n_class = config.n_class
-        self.d_rate = config.d_rate
-        self.bias = config.bias
-        self.n_patch = config.im_size**2 / config.p_size**2
-        self.h_dim = config.h_dim if config.c_dim else 4 * config.n_embd
+        self.n_block = n_block
+        self.n_patch = im_size**2 / p_size**2
+        self.n_embd = n_embd
+        self.h_size = h_size
+        self.p_size = p_size
+        self.im_size = im_size
+        self.c_dim = c_dim
+        self.n_class = n_class
+        self.h_dim = h_dim if h_dim else 4 * n_embd
+        self.d_rate = d_rate
+        self.bias = bias
 
         self.encoder = nn.ModuleDict(dict(
             # pte = ViTConv2dEmbedding(n_embd=self.n_embd, p_size=self.p_size, c_dim=self.c_dim),
@@ -90,6 +89,22 @@ class VisionTransformer(nn.Module):
 
         print("number of parameters: %.2fM" % (self.get_num_params()/1e6,))
 
+        
+    def init_from_config(self, config: VitConfig):
+        assert config.n_block is not None and config.p_size is not None and \
+                config.embd_dim is not None and config.head_dim is not None, \
+                "Configuration must include n_block, p_size, embd_dim, and head_dim."
+        self.n_block = config.n_block
+        self.n_embd = config.n_embd
+        self.h_size = config.h_size
+        self.p_size = config.p_size
+        self.im_size = config.im_size
+        self.c_dim = config.c_dim
+        self.n_class = config.n_class
+        self.d_rate = config.d_rate
+        self.bias = config.bias
+        self.n_patch = config.im_size**2 / config.p_size**2
+        self.h_dim = config.h_dim if config.c_dim else 4 * config.n_embd
         
     def get_num_params(self):
         """

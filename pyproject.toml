@@ -21,5 +21,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-start-streamlit = "tiny_vit_transformer_from_scratch.app.main:main"
+streamlit = "tiny_vit_transformer_from_scratch.app.main:main"
 
