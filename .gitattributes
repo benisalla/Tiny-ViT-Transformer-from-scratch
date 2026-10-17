@@ -1,0 +1,4 @@
+# Keep the old code out of GitHub language stats
+legacy/** linguist-vendored
+# The notebook is generated from src/ by notebooks/build_notebook.py
+notebooks/*.ipynb linguist-generated
