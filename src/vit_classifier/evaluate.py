@@ -21,8 +21,8 @@ from PIL import Image
 from torch.utils.data import DataLoader
 from torchvision.transforms.functional import to_pil_image
 
-from tiny_vit.data import build_datasets, denormalize
-from tiny_vit.predict import Predictor
+from vit_classifier.data import build_datasets, denormalize
+from vit_classifier.predict import Predictor
 
 
 @torch.inference_mode()
@@ -94,7 +94,7 @@ def write_examples(predictor: Predictor, dataset, out_dir: Path, count: int) -> 
 
 
 def main(argv: Sequence[str] | None = None) -> None:
-    p = argparse.ArgumentParser(description="Evaluate a Tiny-ViT checkpoint on a held-out split.")
+    p = argparse.ArgumentParser(description="Evaluate a checkpoint on its held-out split.")
     p.add_argument("--checkpoint", required=True, type=Path)
     p.add_argument("--split", choices=("test", "val"), default="test")
     p.add_argument("--data-dir", help="override the dataset folder stored in the checkpoint")

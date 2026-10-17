@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "tiny-vit-image-classifier"
+name = "vit-image-classifier"
 version = "0.2.0"
 description = "A Vision Transformer image classifier written from scratch in PyTorch, with a Streamlit demo."
 readme = "README.md"
@@ -17,16 +17,16 @@ dependencies = [
 ]
 
 [project.scripts]
-vit-train = "tiny_vit.train:main"
-vit-predict = "tiny_vit.predict:main"
-vit-evaluate = "tiny_vit.evaluate:main"
+vit-train = "vit_classifier.train:main"
+vit-predict = "vit_classifier.predict:main"
+vit-evaluate = "vit_classifier.evaluate:main"
 
 [project.optional-dependencies]
 app = ["streamlit>=1.50"]
 dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.9", "nbformat>=5", "streamlit>=1.50"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/tiny_vit"]
+packages = ["src/vit_classifier"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "tests"]

@@ -14,10 +14,10 @@ from pathlib import Path
 import streamlit as st
 from PIL import Image
 
-from tiny_vit.data import SHAPE_CLASSES, ShapeRenderer
-from tiny_vit.predict import Predictor, overlay_heatmap
+from vit_classifier.data import SHAPE_CLASSES, ShapeRenderer
+from vit_classifier.predict import Predictor, overlay_heatmap
 
-TITLE = "Tiny-ViT Image Classifier"
+TITLE = "ViT Image Classifier"
 
 
 def parse_args() -> argparse.Namespace:

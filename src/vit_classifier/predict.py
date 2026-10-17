@@ -3,7 +3,7 @@
     vit-predict --checkpoint checkpoints/run/best.pt --image leaf.jpg [more.jpg ...] [--top-k 3]
 
 From Python:
-    from tiny_vit.predict import Predictor
+    from vit_classifier.predict import Predictor
     predictor = Predictor.from_checkpoint("checkpoints/run/best.pt")
     predictor.predict(Image.open("leaf.jpg"))   # [("Tomato___healthy", 0.97), ...]
 """
@@ -20,10 +20,10 @@ import numpy as np
 import torch
 from PIL import Image
 
-from tiny_vit.config import DataConfig, ModelConfig, config_from_dict
-from tiny_vit.data import build_transform
-from tiny_vit.model import VisionTransformer, attention_rollout
-from tiny_vit.train import resolve_device
+from vit_classifier.config import DataConfig, ModelConfig, config_from_dict
+from vit_classifier.data import build_transform
+from vit_classifier.model import VisionTransformer, attention_rollout
+from vit_classifier.train import resolve_device
 
 
 def load_model(
@@ -92,7 +92,7 @@ def overlay_heatmap(image: Image.Image, heat: np.ndarray, alpha: float = 0.5) ->
 
 
 def main(argv: Sequence[str] | None = None) -> None:
-    p = argparse.ArgumentParser(description="Classify images with a trained Tiny-ViT checkpoint.")
+    p = argparse.ArgumentParser(description="Classify images with a trained checkpoint.")
     p.add_argument("--checkpoint", required=True, type=Path)
     p.add_argument("--image", required=True, nargs="+", type=Path)
     p.add_argument("--top-k", type=int, default=3)

@@ -1,4 +1,4 @@
-"""Shared helpers: tiny configs, a fake image folder and a ready-made checkpoint.
+"""Shared helpers: small configs, a fake image folder and a ready-made checkpoint.
 
 Everything runs on CPU, offline, in seconds.
 """
@@ -11,14 +11,14 @@ import pytest
 import torch
 from PIL import Image
 
-from tiny_vit.config import DataConfig, ModelConfig, TrainConfig
-from tiny_vit.model import VisionTransformer
-from tiny_vit.train import TrainState, build_optimizer, build_scheduler, save_checkpoint
+from vit_classifier.config import DataConfig, ModelConfig, TrainConfig
+from vit_classifier.model import VisionTransformer
+from vit_classifier.train import TrainState, build_optimizer, build_scheduler, save_checkpoint
 
 COLORS = {"red": (220, 30, 30), "green": (30, 200, 30), "blue": (30, 30, 220)}
 
 
-def tiny_model_config(**overrides) -> ModelConfig:
+def small_model_config(**overrides) -> ModelConfig:
     values = dict(
         num_classes=3, image_size=16, patch_size=4, d_model=32, n_layers=2, n_heads=4,
         dropout=0.0,
@@ -27,7 +27,7 @@ def tiny_model_config(**overrides) -> ModelConfig:
     return ModelConfig(**values)
 
 
-def tiny_train_config(output_dir: Path, **overrides) -> TrainConfig:
+def small_train_config(output_dir: Path, **overrides) -> TrainConfig:
     values = dict(
         output_dir=str(output_dir), epochs=2, batch_size=4, lr=3e-3, warmup_steps=2,
         num_workers=0, log_every=1, device="cpu", precision="fp32", label_smoothing=0.0,
@@ -66,11 +66,11 @@ def folder_data_config(data_dir: Path, **overrides) -> DataConfig:
 def write_checkpoint(
     directory: Path, data_dir: Path | None = None, class_names: list[str] | None = None
 ) -> Path:
-    """A valid vit-train checkpoint of a random tiny model (no training needed)."""
+    """A valid vit-train checkpoint of a random small model (no training needed)."""
     class_names = class_names or sorted(COLORS)  # = sorted folder names of image_folder
     torch.manual_seed(0)
-    model = VisionTransformer(tiny_model_config(num_classes=len(class_names)))
-    config = tiny_train_config(directory)
+    model = VisionTransformer(small_model_config(num_classes=len(class_names)))
+    config = small_train_config(directory)
     optimizer = build_optimizer(model, config, torch.device("cpu"))
     scheduler = build_scheduler(optimizer, 1, 10)
     data_config = folder_data_config(data_dir or directory / "missing")

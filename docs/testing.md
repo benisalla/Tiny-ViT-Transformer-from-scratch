@@ -9,7 +9,7 @@ actually learns.
 ```bash
 pip install -e '.[dev]'
 pytest                                   # all tests, CPU only, no network
-pytest --cov=tiny_vit                    # with line coverage (96 %)
+pytest --cov=vit_classifier                    # with line coverage (96 %)
 pytest tests/test_model.py -v            # one file, verbose
 ruff check . && ruff format --check .    # lint
 ```
@@ -17,7 +17,7 @@ ruff check . && ruff format --check .    # lint
 | File | What it proves |
 |---|---|
 | `test_model.py` | the ViT itself, see the sanity checks below |
-| `test_data.py` | splits are disjoint, complete, class-balanced and depend only on the seed; tiny classes keep a training image; folder labels really are the folders; class subsets and caps; clear errors for missing folders / classes / images; grayscale and RGBA become RGB; synthetic shapes are deterministic and every kind is drawn; CIFAR-10 uses its official test set (torchvision mocked: no download); every augmentation level outputs the model's input size; `denormalize` inverts the transform |
+| `test_data.py` | splits are disjoint, complete, class-balanced and depend only on the seed; very small classes keep a training image; folder labels really are the folders; class subsets and caps; clear errors for missing folders / classes / images; grayscale and RGBA become RGB; synthetic shapes are deterministic and every kind is drawn; CIFAR-10 uses its official test set (torchvision mocked: no download); every augmentation level outputs the model's input size; `denormalize` inverts the transform |
 | `test_train.py` | warmup + cosine schedule; precision choice; evaluation counts every sample (uneven last batch); a short run learns (first loss = ln 3, final loss < 30 % of it, 100 % validation accuracy) and writes safe checkpoints; **a crashed and resumed run ends bit-for-bit equal to an uninterrupted one**; same seed = same run; **gradient accumulation (2 × 4) = one batch of 8**; the CLI trains on shapes; `--overfit` reaches 100 % and turns regularisation off; `--help` |
 | `test_predict.py` | a checkpoint rebuilds the identical model; predictions are sorted probabilities summing to 1; batch and single predictions agree; heatmap shape / range and overlay; `vit-predict` text and JSON output; recall / precision maths; `vit-evaluate` on the held-out split with report and example table; refuses data whose classes differ from the checkpoint's |
 | `test_distributed.py` | 2 processes (gloo, like `torchrun` on 2 GPUs) with different random inits end with the same step count and identical weights; only rank 0 writes checkpoints |

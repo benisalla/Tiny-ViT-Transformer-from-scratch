@@ -1,6 +1,6 @@
 # Training
 
-`vit-train` (= `python -m tiny_vit.train`) trains a model and writes
+`vit-train` (= `python -m vit_classifier.train`) trains a model and writes
 checkpoints to `--output-dir`. Every flag and its default: `vit-train --help`.
 
 ## 1. Install
@@ -81,13 +81,13 @@ averaged after each step.
 
 ```bash
 # 4 GPUs on one machine
-torchrun --nproc_per_node=4 -m tiny_vit.train --dataset cifar10 --batch-size 128 \
+torchrun --nproc_per_node=4 -m vit_classifier.train --dataset cifar10 --batch-size 128 \
          --output-dir checkpoints/cifar10
 
 # 2 machines x 8 GPUs (run on each machine, with its own --node_rank)
 torchrun --nnodes=2 --nproc_per_node=8 --node_rank=0 \
          --rdzv_backend=c10d --rdzv_endpoint=HOST_OF_NODE_0:29500 \
-         -m tiny_vit.train --dataset cifar10 --batch-size 128 --output-dir checkpoints/cifar10
+         -m vit_classifier.train --dataset cifar10 --batch-size 128 --output-dir checkpoints/cifar10
 ```
 
 `--batch-size` is per process: the effective batch is `batch_size ×

@@ -13,7 +13,7 @@ The file is split into small pieces you can read top to bottom:
 Run it with:  vit-train --help
 
 Multi-GPU / multi-node: launch the same command with torchrun, e.g.
-    torchrun --nproc_per_node=4 -m tiny_vit.train ...
+    torchrun --nproc_per_node=4 -m vit_classifier.train ...
 torchrun starts one process per GPU and sets RANK / WORLD_SIZE / LOCAL_RANK;
 the code below picks those up and wraps the model in DistributedDataParallel.
 """
@@ -44,7 +44,7 @@ from torch.optim import AdamW, Optimizer
 from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.data import DataLoader, Dataset, DistributedSampler
 
-from tiny_vit.config import (
+from vit_classifier.config import (
     DATASET_PRESETS,
     DATASETS,
     DataConfig,
@@ -52,8 +52,8 @@ from tiny_vit.config import (
     TrainConfig,
     config_to_dict,
 )
-from tiny_vit.data import ImageDataset, balanced_subset, build_datasets, build_transform
-from tiny_vit.model import VisionTransformer
+from vit_classifier.data import ImageDataset, balanced_subset, build_datasets, build_transform
+from vit_classifier.model import VisionTransformer
 
 logger = logging.getLogger(__name__)
 
@@ -409,7 +409,7 @@ def train(
 ) -> TrainState:
     """Run the full training loop and return the final counters.
 
-    Everything is passed in already built, so tests can use tiny datasets.
+    Everything is passed in already built, so tests can use small datasets.
     `callback` (optional) receives every logged metric as a dict, on the main
     process only; the notebook uses it to draw live training curves:
         {"kind": "train", "step", "epoch", "total_steps", "loss", "accuracy", "lr",

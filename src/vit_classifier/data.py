@@ -26,7 +26,7 @@ from PIL import Image, ImageDraw
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from tiny_vit.config import DataConfig
+from vit_classifier.config import DataConfig
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 

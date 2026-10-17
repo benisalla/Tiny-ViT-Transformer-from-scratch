@@ -11,11 +11,11 @@ from pathlib import Path
 import torch
 import torch.distributed as dist
 import torch.multiprocessing as mp
-from conftest import folder_data_config, make_image_folder, tiny_model_config, tiny_train_config
+from conftest import folder_data_config, make_image_folder, small_model_config, small_train_config
 
-from tiny_vit.data import build_datasets
-from tiny_vit.model import VisionTransformer
-from tiny_vit.train import LAST_CHECKPOINT, build_dataloaders, get_dist_info, train
+from vit_classifier.data import build_datasets
+from vit_classifier.model import VisionTransformer
+from vit_classifier.train import LAST_CHECKPOINT, build_dataloaders, get_dist_info, train
 
 WORLD_SIZE = 2
 
@@ -36,10 +36,10 @@ def worker(rank: int, port: int, tmp_path: Path) -> None:
     try:
         assert get_dist_info().world_size == WORLD_SIZE
         torch.manual_seed(rank)  # different init per rank: DDP must broadcast rank 0's
-        model = VisionTransformer(tiny_model_config())
+        model = VisionTransformer(small_model_config())
         data_config = folder_data_config(tmp_path / "images")
         datasets = build_datasets(data_config)
-        config = tiny_train_config(tmp_path / "run", epochs=3, batch_size=2, grad_accum_steps=2)
+        config = small_train_config(tmp_path / "run", epochs=3, batch_size=2, grad_accum_steps=2)
         train_loader, val_loader = build_dataloaders(
             datasets.train, datasets.val, config, torch.device("cpu")
         )

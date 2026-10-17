@@ -5,12 +5,12 @@ from pathlib import Path
 
 import pytest
 import torch
-from conftest import folder_data_config, tiny_model_config, tiny_train_config
+from conftest import folder_data_config, small_model_config, small_train_config
 from torch.utils.data import DataLoader, TensorDataset
 
-from tiny_vit.data import build_datasets
-from tiny_vit.model import VisionTransformer
-from tiny_vit.train import (
+from vit_classifier.data import build_datasets
+from vit_classifier.model import VisionTransformer
+from vit_classifier.train import (
     BEST_CHECKPOINT,
     LAST_CHECKPOINT,
     build_dataloaders,
@@ -26,12 +26,12 @@ from tiny_vit.train import (
 
 
 def run(tmp_path: Path, image_folder: Path, name: str = "run", **overrides):
-    """Train a tiny model on the colour folder; returns (model, state, train_config)."""
+    """Train a small model on the colour folder; returns (model, state, train_config)."""
     torch.manual_seed(0)
     data_config = folder_data_config(image_folder)
     datasets = build_datasets(data_config)
-    config = tiny_train_config(tmp_path / name, **overrides)
-    model = VisionTransformer(tiny_model_config())
+    config = small_train_config(tmp_path / name, **overrides)
+    model = VisionTransformer(small_model_config())
     train_loader, val_loader = build_dataloaders(
         datasets.train, datasets.val, config, torch.device("cpu")
     )
@@ -85,8 +85,8 @@ def test_training_learns_and_writes_checkpoints(tmp_path: Path, image_folder: Pa
     torch.manual_seed(0)
     data_config = folder_data_config(image_folder)
     datasets = build_datasets(data_config)
-    config = tiny_train_config(tmp_path / "run", epochs=6)
-    model = VisionTransformer(tiny_model_config())
+    config = small_train_config(tmp_path / "run", epochs=6)
+    model = VisionTransformer(small_model_config())
     loaders = build_dataloaders(datasets.train, datasets.val, config, torch.device("cpu"))
     state = train(model, *loaders, data_config, config, datasets.class_names, events.append)
 
@@ -109,8 +109,8 @@ def test_resume_mid_training_matches_bit_for_bit(tmp_path: Path, image_folder: P
     torch.manual_seed(0)
     data_config = folder_data_config(image_folder)
     datasets = build_datasets(data_config)
-    config = tiny_train_config(tmp_path / "partial", epochs=3)
-    model = VisionTransformer(tiny_model_config())
+    config = small_train_config(tmp_path / "partial", epochs=3)
+    model = VisionTransformer(small_model_config())
     loaders = build_dataloaders(datasets.train, datasets.val, config, torch.device("cpu"))
     saved = {}
 
@@ -193,7 +193,7 @@ def test_cli_overfit_sanity_check_reaches_100_percent(
 
 def test_load_checkpoint_restores_counters(tmp_path: Path, image_folder: Path) -> None:
     model, state, _ = run(tmp_path, image_folder, epochs=1)
-    fresh = VisionTransformer(tiny_model_config())
+    fresh = VisionTransformer(small_model_config())
     restored = load_checkpoint(tmp_path / "run" / LAST_CHECKPOINT, fresh)
     assert restored.step == state.step
     assert restored.history == state.history

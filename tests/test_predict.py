@@ -9,10 +9,10 @@ import torch
 from conftest import COLORS, write_checkpoint
 from PIL import Image
 
-from tiny_vit.evaluate import format_report, summarize
-from tiny_vit.evaluate import main as evaluate_main
-from tiny_vit.predict import Predictor, load_model, overlay_heatmap
-from tiny_vit.predict import main as predict_main
+from vit_classifier.evaluate import format_report, summarize
+from vit_classifier.evaluate import main as evaluate_main
+from vit_classifier.predict import Predictor, load_model, overlay_heatmap
+from vit_classifier.predict import main as predict_main
 
 
 def test_load_model_rebuilds_the_saved_model(tmp_path: Path) -> None:

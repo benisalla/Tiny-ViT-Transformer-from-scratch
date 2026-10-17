@@ -19,7 +19,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from tiny_vit.config import ModelConfig
+from vit_classifier.config import ModelConfig
 
 # ---------------------------------------------------------------------------
 # 1. Patch embedding: image -> sequence of tokens

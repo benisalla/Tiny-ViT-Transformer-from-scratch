@@ -52,7 +52,7 @@ def test_page_reports_a_missing_checkpoint(monkeypatch: pytest.MonkeyPatch) -> N
     pytest.importorskip("streamlit")
     page = run_page(monkeypatch, "does/not/exist.pt")
     assert not page.exception
-    assert page.title[0].value == "Tiny-ViT Image Classifier"
+    assert page.title[0].value == "ViT Image Classifier"
     assert "Checkpoint not found" in page.error[0].value
 
 
@@ -69,7 +69,7 @@ def test_page_loads_a_checkpoint_and_waits_for_an_image(
 
 def test_page_classifies_a_generated_shape(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     pytest.importorskip("streamlit")
-    from tiny_vit.data import SHAPE_CLASSES
+    from vit_classifier.data import SHAPE_CLASSES
 
     page = run_page(monkeypatch, str(write_checkpoint(tmp_path, class_names=list(SHAPE_CLASSES))))
     page = page.button[0].click().run()
@@ -100,8 +100,8 @@ def test_notebook_embeds_the_current_package_code(tmp_path: Path) -> None:
         for cell in notebook.cells
         if cell.cell_type == "code" and cell.source.startswith("%%writefile")
     }
-    package = ROOT / "src" / "tiny_vit"
-    expected = {f"src/tiny_vit/{p.name}": p.read_text() for p in package.glob("*.py")}
+    package = ROOT / "src" / "vit_classifier"
+    expected = {f"src/vit_classifier/{p.name}": p.read_text() for p in package.glob("*.py")}
     assert set(written) == set(expected), "a module is missing from the notebook"
     for name, source in expected.items():
         assert written[name] == source.strip(), f"{name} in the notebook differs from src/"

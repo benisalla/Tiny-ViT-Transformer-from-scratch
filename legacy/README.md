@@ -3,7 +3,7 @@
 `tiny_vit_transformer_from_scratch/` is the first version of this project,
 unchanged except that cached `__pycache__` files and the 4.5 MB app background
 image were removed. Its `pyproject.toml` / `poetry.lock` are here too. The
-maintained code is in [`src/tiny_vit`](../src/tiny_vit). This page lists what
+maintained code is in [`src/vit_classifier`](../src/vit_classifier). This page lists what
 was wrong with the first version and where each problem is fixed.
 
 Checkpoints of the first version cannot be loaded by the new code (module
@@ -29,7 +29,7 @@ the weights actually had, see the model table below). None were published.
 4. **The training schedule was unusable.** `num_epochs = total_iters *
    batch_size // train_size` = 3 000 000 × 16 / 2 000 = **24 000 epochs**, with
    a cosine schedule over epochs and `clip_grad_norm_(..., 0.05)` (a max norm
-   20× smaller than usual, which turns every step into a tiny fixed-length
+   20× smaller than usual, which turns every step into a very small fixed-length
    step). **Fix:** epochs you choose, per-step warmup + cosine decay, clip at 1.0.
 5. **The app could not start anywhere but one PC.** It loaded the checkpoint
    from `C:\Users\Omar\Desktop\...`, read CSS and images by paths relative to

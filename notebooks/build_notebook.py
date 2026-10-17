@@ -1,8 +1,8 @@
 """Build notebooks/train_colab_kaggle.ipynb: a self-contained training notebook.
 
-Every module of src/tiny_vit is embedded verbatim (as %%writefile cells), so the
+Every module of src/vit_classifier is embedded verbatim (as %%writefile cells), so the
 notebook runs the exact package code and needs no GitHub access.
-Regenerate after changing src/tiny_vit:
+Regenerate after changing src/vit_classifier:
     python notebooks/build_notebook.py . notebooks/train_colab_kaggle.ipynb
 """
 
@@ -28,11 +28,11 @@ def code(text: str) -> None:
 
 # ---------------------------------------------------------------------------
 md("""
-# Tiny-ViT: training notebook (Kaggle & Colab)
+# ViT Image Classifier: training notebook (Kaggle & Colab)
 
 Train the from-scratch Vision Transformer with a **free Kaggle or Colab GPU**,
 on synthetic shapes, CIFAR-10 or PlantVillage leaf diseases. The notebook is
-**self-contained**: section 2 writes the `tiny_vit` package (identical to the
+**self-contained**: section 2 writes the `vit_classifier` package (identical to the
 repo's `src/`), and training goes through the same `train()` function as the
 `vit-train` command.
 
@@ -50,26 +50,26 @@ repo's `src/`), and training goes through the same `train()` function as the
 md("""
 ## 1. The package
 
-The cells below write `src/tiny_vit/*.py`, copied from the repo at build time.
+The cells below write `src/vit_classifier/*.py`, copied from the repo at build time.
 Read them in this order: `config` → `data` → `model` → `train`.
 """)
 code("""
 import os
 
-os.makedirs("src/tiny_vit", exist_ok=True)
+os.makedirs("src/vit_classifier", exist_ok=True)
 """)
 for module in MODULES:
-    source = (ROOT / "src" / "tiny_vit" / f"{module}.py").read_text()
-    code(f"%%writefile src/tiny_vit/{module}.py\n{source}")
+    source = (ROOT / "src" / "vit_classifier" / f"{module}.py").read_text()
+    code(f"%%writefile src/vit_classifier/{module}.py\n{source}")
 code("""
 import sys
 
 sys.path.insert(0, "src")
-for name in [m for m in sys.modules if m.startswith("tiny_vit")]:
+for name in [m for m in sys.modules if m.startswith("vit_classifier")]:
     del sys.modules[name]  # pick up the files just written if this cell is re-run
-import tiny_vit.train as T
+import vit_classifier.train as T
 
-print("tiny_vit ready")
+print("vit_classifier ready")
 """)
 
 # ---------------------------------------------------------------------------
@@ -82,7 +82,7 @@ md("""
 | `"cifar10"` | 60 000 photos 32×32, 10 classes, 170 MB | the standard small benchmark |
 | `"plantvillage"` | ~15 000 leaf photos, 12 tomato / potato classes, ~0.3 GB | the original task of this project |
 
-`SMOKE_TEST = True` runs a tiny version to check the whole notebook in a few
+`SMOKE_TEST = True` runs a small version to check the whole notebook in a few
 minutes. Keep it `False` for real training.
 """)
 code("""
@@ -92,9 +92,9 @@ from pathlib import Path
 
 import torch
 
-from tiny_vit.config import DATASET_PRESETS, PLANTVILLAGE_TOMATO_POTATO, DataConfig, TrainConfig
+from vit_classifier.config import DATASET_PRESETS, PLANTVILLAGE_TOMATO_POTATO, DataConfig, TrainConfig
 
-SMOKE_TEST = False          # True = tiny quick check of the whole notebook
+SMOKE_TEST = False          # True = small quick check of the whole notebook
 DATASET = "plantvillage"    # "shapes" | "cifar10" | "plantvillage"
 USE_GOOGLE_DRIVE = False    # Colab only: keep checkpoints on Drive (survive disconnects)
 RESUME = True               # continue from last.pt in OUTPUT_DIR if it exists
@@ -106,7 +106,7 @@ if ON_COLAB and USE_GOOGLE_DRIVE:
     from google.colab import drive
 
     drive.mount("/content/drive")
-    OUTPUT_DIR = Path(f"/content/drive/MyDrive/tiny-vit/{DATASET}")
+    OUTPUT_DIR = Path(f"/content/drive/MyDrive/vit-classifier/{DATASET}")
 elif ON_KAGGLE:
     OUTPUT_DIR = Path(f"/kaggle/working/checkpoints/{DATASET}")
 else:
@@ -180,7 +180,7 @@ import logging
 
 import matplotlib.pyplot as plt
 
-from tiny_vit.data import build_datasets, denormalize
+from vit_classifier.data import build_datasets, denormalize
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S",
                     force=True)
@@ -209,8 +209,8 @@ import math
 
 import torch.nn.functional as F
 
-from tiny_vit.config import ModelConfig
-from tiny_vit.model import VisionTransformer
+from vit_classifier.config import ModelConfig
+from vit_classifier.model import VisionTransformer
 
 model_config = ModelConfig(num_classes=len(class_names), **model_size)
 model = VisionTransformer(model_config).to(device)
@@ -287,7 +287,7 @@ precision, confusion matrix, and a table of real examples (`examples/README.md`)
 ready to commit to GitHub.
 """)
 code("""
-from tiny_vit import evaluate
+from vit_classifier import evaluate
 
 evaluate.main(["--checkpoint", str(OUTPUT_DIR / T.BEST_CHECKPOINT), "--split", "test",
                "--report", str(OUTPUT_DIR / "test_report.json"),
@@ -296,7 +296,7 @@ evaluate.main(["--checkpoint", str(OUTPUT_DIR / T.BEST_CHECKPOINT), "--split", "
 code("""
 from PIL import Image
 
-from tiny_vit.predict import Predictor, overlay_heatmap
+from vit_classifier.predict import Predictor, overlay_heatmap
 
 predictor = Predictor.from_checkpoint(OUTPUT_DIR / T.BEST_CHECKPOINT, device.type)
 fig, axes = plt.subplots(2, 6, figsize=(18, 6.5))
@@ -323,7 +323,7 @@ Zips `best.pt`, the test report and the examples (`last.pt` is left out: it is
 only needed to resume). Use it with the repo:
 
 ```bash
-unzip tiny-vit-run.zip -d checkpoints/run
+unzip vit-classifier-run.zip -d checkpoints/run
 vit-predict --checkpoint checkpoints/run/best.pt --image leaf.jpg
 streamlit run app/streamlit_app.py -- --checkpoint checkpoints/run/best.pt
 ```
@@ -340,7 +340,7 @@ with tempfile.TemporaryDirectory() as tmp:
             shutil.copy(OUTPUT_DIR / name, bundle / name)
     if (OUTPUT_DIR / "examples").exists():
         shutil.copytree(OUTPUT_DIR / "examples", bundle / "examples")
-    archive = shutil.make_archive(str(OUTPUT_DIR.parent / "tiny-vit-run"), "zip", bundle)
+    archive = shutil.make_archive(str(OUTPUT_DIR.parent / "vit-classifier-run"), "zip", bundle)
 print("created", archive)
 
 if ON_COLAB:

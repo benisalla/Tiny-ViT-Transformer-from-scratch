@@ -1,7 +1,7 @@
 # Datasets
 
 `vit-train --dataset <name>` picks the source. All three go through the same
-`build_datasets()` (in [`src/tiny_vit/data.py`](../src/tiny_vit/data.py)),
+`build_datasets()` (in [`src/vit_classifier/data.py`](../src/vit_classifier/data.py)),
 which returns train / validation / test sets and the class names. The class
 names are stored in every checkpoint, so prediction never depends on a
 hard-coded list.
@@ -52,7 +52,7 @@ CIFAR-10 typically reach ~80-90 % with strong augmentation and 100-200 epochs
 PlantVillage (Hughes & Salathé, 2015) is a set of ~54 000 photos of single
 leaves on a plain background, 38 crop / disease classes. The first version of
 this project used the 12 tomato and potato classes; they are listed in
-`tiny_vit.config.PLANTVILLAGE_TOMATO_POTATO`.
+`vit_classifier.config.PLANTVILLAGE_TOMATO_POTATO`.
 
 Download those classes (~15 000 images, ~0.3 GB) from the Hugging Face mirror
 [`leoho36/plant_village_dataset`](https://huggingface.co/datasets/leoho36/plant_village_dataset):

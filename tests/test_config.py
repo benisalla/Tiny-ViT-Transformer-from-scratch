@@ -3,7 +3,7 @@
 import pytest
 import torch
 
-from tiny_vit.config import (
+from vit_classifier.config import (
     DATASET_PRESETS,
     DataConfig,
     ModelConfig,

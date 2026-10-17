@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="https://github.com/benisalla/tiny-vit-image-classifier/assets/89405673/035598be-ea1c-4501-947a-ff51524e78ef" width="160" height="160"/>
-  <h1>tiny-vit-image-classifier</h1>
+  <img src="https://github.com/benisalla/vit-image-classifier/assets/89405673/035598be-ea1c-4501-947a-ff51524e78ef" width="160" height="160"/>
+  <h1>vit-image-classifier</h1>
   <p>A Vision Transformer (ViT) image classifier, written from scratch in PyTorch.</p>
   <p><b>Show it an image, it tells you what is in it, and where it looked.</b></p>
 </div>
@@ -136,7 +136,7 @@ published. All of these are fixed and covered by tests:
 |---|---|---|
 | `train.py` called `VisionTransformer(config)` but the model takes keyword arguments; imports worked from no single folder | training crashed immediately | one installable package, `vit-train` command, tested end to end |
 | attention did `self.training = training` (default `True`) | **dropout stayed on in evaluation** and in the app | PyTorch's own train / eval mode (tested) |
-| 24 000 epochs, gradient clipping at 0.05 | the schedule never finished; tiny fixed-size steps | per-step warmup + cosine, clip at 1.0 |
+| 24 000 epochs, gradient clipping at 0.05 | the schedule never finished; very small fixed-size steps | per-step warmup + cosine, clip at 1.0 |
 | MLP width hard-coded to 4 × width while the config said 6 × | saved checkpoints described the wrong architecture | the configured width is used |
 | app loaded `C:\Users\Omar\...\vit_chpts.pth`, assumed 256 px images (training used 128) | ran on one PC only, with the wrong input size | `--checkpoint` flag; image size, normalisation and class names come from the checkpoint |
 | unseeded splits, `os.listdir()[:N]` subsets | a different test set every run | stratified split from a fixed seed |
@@ -158,7 +158,7 @@ The full audit (model, training, data, app) is in [legacy/README.md](legacy/READ
 ## Repository layout
 
 ```
-src/tiny_vit/          the package (read in this order)
+src/vit_classifier/          the package (read in this order)
   config.py            every hyperparameter: DataConfig, ModelConfig, TrainConfig, presets
   data.py              shapes / CIFAR-10 / image-folder datasets, stratified splits, transforms
   model.py             the Vision Transformer, from patches to logits, + attention rollout
@@ -208,10 +208,10 @@ There is no formal license yet: please credit the source if you use or adapt
 the code.
 
 ```bibtex
-@misc{tiny_vit_2024,
-  title  = {TINY-ViT: Vision Transformer from Scratch},
+@misc{vit_classifier_2024,
+  title  = {ViT Image Classifier: a Vision Transformer from Scratch},
   author = {Ben Alla, Ismail},
   year   = {2024},
-  url    = {https://github.com/benisalla/tiny-vit-image-classifier}
+  url    = {https://github.com/benisalla/vit-image-classifier}
 }
 ```

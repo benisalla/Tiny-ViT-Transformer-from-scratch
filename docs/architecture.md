@@ -1,6 +1,6 @@
 # Architecture
 
-Everything is in [`src/tiny_vit/model.py`](../src/tiny_vit/model.py) (~270
+Everything is in [`src/vit_classifier/model.py`](../src/vit_classifier/model.py) (~270
 lines, meant to be read top to bottom). This page follows one batch through
 the model with the default PlantVillage sizes: 128 × 128 images, 16 × 16
 patches, width `D = 256`, 6 layers, 8 heads.

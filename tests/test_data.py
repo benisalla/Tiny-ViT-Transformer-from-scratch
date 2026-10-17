@@ -8,9 +8,9 @@ import torch
 from conftest import folder_data_config
 from PIL import Image
 
-import tiny_vit.data as data
-from tiny_vit.config import DataConfig
-from tiny_vit.data import (
+import vit_classifier.data as data
+from vit_classifier.config import DataConfig
+from vit_classifier.data import (
     SHAPE_CLASSES,
     ShapeRenderer,
     balanced_subset,
@@ -33,7 +33,7 @@ def test_stratified_split_is_disjoint_complete_balanced_and_seeded() -> None:
     assert stratified_split(items, [0.1, 0.2], seed=1) != [train, val, test]
 
 
-def test_tiny_classes_keep_a_training_example() -> None:
+def test_small_classes_keep_a_training_example() -> None:
     train, val, test = stratified_split([("a", 0), ("b", 1), ("c", 1)], [0.5, 0.5], seed=0)
     assert {label for _, label in train} == {0, 1}
 

@@ -22,7 +22,7 @@ leaf1.jpg
 
 ```python
 from PIL import Image
-from tiny_vit.predict import Predictor, overlay_heatmap
+from vit_classifier.predict import Predictor, overlay_heatmap
 
 predictor = Predictor.from_checkpoint("checkpoints/plantvillage/best.pt")
 image = Image.open("leaf.jpg")
