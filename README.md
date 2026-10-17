@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch/assets/89405673/035598be-ea1c-4501-947a-ff51524e78ef" width="160" height="160"/>
-  <h1>Tiny-ViT: a Vision Transformer from scratch</h1>
+  <img src="https://github.com/benisalla/tiny-vit-image-classifier/assets/89405673/035598be-ea1c-4501-947a-ff51524e78ef" width="160" height="160"/>
+  <h1>tiny-vit-image-classifier</h1>
+  <p>A Vision Transformer (ViT) image classifier, written from scratch in PyTorch.</p>
   <p><b>Show it an image, it tells you what is in it, and where it looked.</b></p>
 </div>
 
@@ -211,6 +212,6 @@ the code.
   title  = {TINY-ViT: Vision Transformer from Scratch},
   author = {Ben Alla, Ismail},
   year   = {2024},
-  url    = {https://github.com/benisalla/Tiny-ViT-Transformer-from-scratch}
+  url    = {https://github.com/benisalla/tiny-vit-image-classifier}
 }
 ```

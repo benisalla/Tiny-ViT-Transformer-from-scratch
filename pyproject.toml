@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "tiny-vit-from-scratch"
+name = "tiny-vit-image-classifier"
 version = "0.2.0"
 description = "A Vision Transformer image classifier written from scratch in PyTorch, with a Streamlit demo."
 readme = "README.md"
